@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYDROSPHÈRE - Université d'Antananarivo</title>
+
+    <!-- Polices Google Fonts modernes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #1a3a8f;
+            --secondary-blue: #2a5caa;
+            --accent-yellow: #ffcc00;
+            --light-blue: #e8f0fe;
+            --dark-blue: #0d285c;
+            --text-dark: #2c3e50;
+            --text-light: #5d6d7e;
+            --background-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a3a8f 0%, #2a5caa 100%);
+            --gradient-accent: linear-gradient(135deg, #ffcc00 0%, #f39c12 100%);
+            --shadow-soft: 0 10px 40px rgba(26, 58, 143, 0.1);
+            --shadow-medium: 0 15px 50px rgba(26, 58, 143, 0.15);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #e8f0fe 100%);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .univ-logo { display: flex; align-items: center; gap: 20px; }
+        .univ-logo img {
+            height: 100px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .univ-logo img:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 12px 35px rgba(0,0,0,0.4); }
+
+        .univ-info { text-align: center; flex-grow: 1; }
+        .univ-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        .faculty {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--accent-yellow);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .mention { font-size: 1.2rem; font-style: italic; opacity: 0.95; font-weight: 300; }
+
+        .wave-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f8fafc' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 30px; }
+
+        .title-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--white);
+            margin: 40px 0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        .title-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: var(--gradient-accent);
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+        }
+        .main-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+        .subtitle { font-size: 1.4rem; color: var(--text-light); margin-top: 30px; font-weight: 300; font-style: italic; }
+
+        .main-title-image {
+            max-width: 90%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        .main-title-image:hover { transform: scale(1.02); box-shadow: 0 25px 60px rgba(26, 58, 143, 0.2); }
+
+        .metadata {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            background: var(--gradient-primary);
+            padding: 25px 40px;
+            border-radius: 50px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-medium);
+            color: var(--white);
+        }
+        .metadata-item { font-size: 1.2rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .metadata-item strong { color: var(--accent-yellow); font-weight: 700; }
+
+        .sommaire {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid var(--light-blue);
+        }
+        .sommaire h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            border-bottom: 4px solid var(--accent-yellow);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .sommaire h2::before { content: "📑"; font-size: 2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        th {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 20px 25px;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        td {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e8f0fe;
+            vertical-align: top;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        tr:hover td { background-color: var(--light-blue); transform: translateX(5px); }
+        tr:last-child td { border-bottom: none; }
+
+        .partie {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-soft);
+            border-top: 6px solid var(--primary-blue);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .partie:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+
+        .partie-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-blue);
+            border-left: 6px solid var(--accent-yellow);
+            padding-left: 25px;
+            margin-bottom: 30px;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .partie-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-blue);
+            margin: 30px 0 20px;
+            font-size: 1.7rem;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #e0e0e0;
+            font-weight: 700;
+        }
+        .partie-content {
+            text-align: justify;
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+        .partie-content p { margin-bottom: 20px; }
+        .partie-content strong { color: var(--primary-blue); font-weight: 700; }
+
+        .image-container, .graph-container {
+            text-align: center;
+            margin: 35px 0;
+            position: relative;
+        }
+        .image-container img, .graph-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        .image-container img:hover, .graph-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(26, 58, 143, 0.2);
+        }
+        .graph-container {
+            background: linear-gradient(135deg, #f8fafc 0%, #e8f0fe 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid var(--light-blue);
+        }
+        .graph-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-yellow);
+            display: inline-block;
+        }
+        .image-caption {
+            font-style: italic;
+            color: var(--text-light);
+            margin-top: 15px;
+            font-size: 1rem;
+            padding: 12px 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+            display: inline-block;
+            border-left: 4px solid var(--accent-yellow);
+        }
+
+        ul, ol { margin-left: 40px; margin-bottom: 25px; }
+        li { margin-bottom: 12px; position: relative; padding-left: 10px; font-size: 1.1rem; }
+        ul li::marker { color: var(--accent-yellow); font-size: 1.3rem; }
+        ol li::marker { color: var(--primary-blue); font-weight: bold; font-size: 1.2rem; }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #d4e3fc 100%);
+            border-left: 6px solid var(--primary-blue);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 16px 16px 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(26, 58, 143, 0.1);
+        }
+        .highlight-box::before {
+            content: "💡";
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            background: var(--white);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            font-size: 1.5rem;
+        }
+        .highlight-box p { margin-bottom: 0; font-style: italic; font-size: 1.2rem; color: var(--dark-blue); font-weight: 500; }
+
+        .info-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffefc2 100%);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .info-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--accent-yellow);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark-blue);
+        }
+        .info-box h4 { color: var(--primary-blue); margin-bottom: 15px; font-size: 1.4rem; }
+
+        .conclusion {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #d4e3fc 100%);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-top: 40px;
+            border-left: 6px solid var(--primary-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        .conclusion::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-accent);
+        }
+        .conclusion h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .conclusion h3::before {
+            content: "✓";
+            background: var(--accent-yellow);
+            color: var(--dark-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .conclusion p { font-size: 1.2rem; line-height: 1.9; }
+
+        .webographie {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin-top: 50px;
+            border: 2px solid #e0e0e0;
+            border-left: 6px solid var(--accent-yellow);
+        }
+        .webographie h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-size: 1.9rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .webographie h3::before { content: "📚"; font-size: 1.8rem; }
+        .webographie p {
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            background: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-blue);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .webographie p:hover { transform: translateX(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px 30px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: var(--radius) var(--radius) 0 0;
+            position: relative;
+        }
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231a3a8f' fill-opacity='1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat top;
+            background-size: cover;
+        }
+        footer p { margin-bottom: 10px; font-size: 1.1rem; opacity: 0.9; }
+        footer strong { color: var(--accent-yellow); }
+
+        @media (max-width: 992px) {
+            .main-title { font-size: 3.5rem; }
+            .univ-name { font-size: 2rem; }
+            .partie { padding: 35px; }
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .univ-logo { justify-content: center; }
+            .main-title { font-size: 2.8rem; }
+            .metadata { flex-direction: column; border-radius: 20px; gap: 15px; }
+            .partie-title { font-size: 2rem; }
+            .partie-subtitle { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 20px 15px; }
+            .main-title { font-size: 2.2rem; }
+            .partie { padding: 25px 20px; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .partie, .sommaire { animation: fadeInUp 0.6s ease-out; }
+
+        a { color: var(--secondary-blue); text-decoration: none; border-bottom: 2px solid transparent; transition: all 0.3s ease; font-weight: 600; }
+        a:hover { color: var(--primary-blue); border-bottom: 2px solid var(--accent-yellow); }
+
+        .underline { text-decoration: none; position: relative; display: inline-block; }
+        .underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .graph-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            border: 2px solid var(--light-blue);
+        }
+        .graph-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .graph-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .graph-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+        .graph-item img { width: 100%; border-radius: 8px; }
+        .graph-item h4 { color: var(--primary-blue); margin-top: 15px; font-size: 1.2rem; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="univ-logo">
+                <img src="media/image1.jpeg" alt="Logo Université d'Antananarivo">
+                <img src="media/image2.jpeg" alt="Logo Faculté">
+            </div>
+            <div class="univ-info">
+                <div class="univ-name">UNIVERSITÉ D'ANTANANARIVO</div>
+                <div class="faculty">FACULTÉ DES LETTRES ET SCIENCES HUMAINES</div>
+                <div class="mention">Mention Géographie</div>
+            </div>
+        </div>
+        <div class="wave-bottom"></div>
+    </header>
+
+    <div class="container">
+        <div class="title-section">
+            <h1 class="main-title">HYDROSPHÈRE</h1>
+            <p class="subtitle">Étude complète des eaux terrestres, des océans et des phénomènes hydrologiques</p>
+            <div class="image-container">
+                <img src="media/image3.jpeg" alt="Représentation de l'hydrosphère" class="main-title-image">
+            </div>
+        </div>
+
+        <div class="metadata">
+            <div class="metadata-item"><strong>Année universitaire :</strong> 2024-2025</div>
+            <div class="metadata-item"><strong>Présenté par :</strong> JAH KOB</div>
+            <div class="metadata-item"><strong>Matière :</strong> Géographie Physique</div>
+        </div>
+
+        <div class="sommaire">
+            <h2>SOMMAIRE</h2>
+            <table>
+                <thead>
+                    <tr><th>Partie</th><th>Contenu</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1ère partie</td><td>LE DÉRIVE DES CONTINENTS <strong>WEGENER</strong></td></tr>
+                    <tr><td>2ème partie</td><td>RELIEF SOUS-MARIN :<br>I. La Marge continentale<br>II. La cuvette océanique</td></tr>
+                    <tr><td>3ème partie</td><td>MILIEU MARIN :<br>- Courant marin (surface/profondeur)<br>- Vagues, Houles, Tsunami</td></tr>
+                    <tr><td>4ème partie</td><td>Le cycle de l'eau</td></tr>
+                    <tr><td>5ème partie</td><td>Océanisation et Fermeture de l'océan</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRAPHIQUE: Résumé visuel -->
+        <div class="graph-section">
+            <h3 class="graph-title">📊 Vue d'ensemble de l'Hydrosphère</h3>
+            <div class="graph-container">
+                <img src="media/graph_resume_hydrosphere.png" alt="Résumé visuel">
+                <div class="image-caption">Figure 1: Tableau de bord synthétique des principales caractéristiques de l'hydrosphère</div>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h2 class="partie-title">LA « DÉRIVE DES CONTINENTS » DE WEGENER</h2>
+            <div class="partie-content">
+                <p>À partir de 1912, Alfred Wegener (1880-1930), développe la théorie de la « dérive des continents ». Celle-ci considère que les continents « flotteraient » sur le manteau, dont la densité est plus élevée, et seraient animés de mouvements de translation. À une certaine époque, tous les continents auraient été réunis en une masse continentale unique, la <strong>Pangée</strong>, et se seraient ensuite séparés.</p>
+                <p>L'hypothèse de mouvements relatifs des continents entre eux n'était pas neuve et avait déjà été discutée, notamment par Darwin.</p>
+            </div>
+
+            <!-- GRAPHIQUE: Dérive des continents -->
+            <div class="graph-container">
+                <img src="media/graph_derive_continents.png" alt="Dérive des continents">
+                <div class="image-caption">Figure 2: Évolution de la Pangée à l'actuel selon la théorie de Wegener</div>
+            </div>
+
+            <div class="highlight-box">
+                <p>La Pangée (du grec « pan » = tout et « gaia » = terre) était un supercontinent qui existait il y a environ 250 millions d'années et qui s'est fragmenté pour former les continents actuels.</p>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h2 class="partie-title">RELIEF SOUS-MARIN</h2>
+            <h3 class="partie-subtitle">Les éléments constitutifs du relief sous-marin</h3>
+
+            <h4 class="partie-subtitle">Les marges continentales</h4>
+            <h4 class="partie-subtitle">Les cuvettes océaniques</h4>
+
+            <div class="image-container">
+                <img src="media/image4.jpeg" alt="Relief sous-marin">
+                <div class="image-caption">Représentation du relief sous-marin</div>
+            </div>
+
+            <!-- GRAPHIQUE: Coupe du relief marin -->
+            <div class="graph-container">
+                <img src="media/graph_relief_marin.png" alt="Coupe du relief marin">
+                <div class="image-caption">Figure 3: Coupe transversale schématique du relief sous-marin des continents aux fosses océaniques</div>
+            </div>
+
+            <h3 class="partie-subtitle">1. Les marges continentales :</h3>
+            <div class="partie-content">
+                <p>C'est la zone de transition entre une croûte continentale et une croûte océanique ; elle relie le continent et la zone océanique.</p>
+            </div>
+
+            <h4 class="partie-subtitle">a) Caractéristique d'une marge continentale</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Extension faible : 16% de la superficie totale sous-marine.</li>
+                    <li>Zone proche de continent ou bordure des continents.</li>
+                    <li>Zone peu profonde de 0 à 2000m de profondeur.</li>
+                    <li>Un soubassement granitique : même nature que la masse continentale</li>
+                </ul>
+                <div class="image-container">
+                    <img src="media/image2.png" alt="Marge continentale">
+                </div>
+            </div>
+
+            <!-- GRAPHIQUE: Répartition des zones de profondeur -->
+            <div class="graph-container">
+                <img src="media/graph_zones_profondeur.png" alt="Zones de profondeur">
+                <div class="image-caption">Figure 4: Répartition des fonds marins selon la profondeur</div>
+            </div>
+
+            <h4 class="partie-subtitle">b) Les éléments constitutifs d'une marge continentale : plateformes (plateau) continentales, les talus et glacis continentaux</h4>
+
+            <h4 class="partie-subtitle">I. Plateau continental ou pré continent :</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Plateau sous-marin : plateaux continentaux.</li>
+                    <li>Profond 0 à 200m de profondeur</li>
+                    <li>Pente faible ≈ 2 pour 1000</li>
+                    <li>Forme irrégulière composée de vallées et des interfluves (un relief séparant deux vallées contiguës) : prolongement des formes continentales. Largeur variable en fonction du relief du rivage.</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">II. Les talus continentaux :</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Relief très pentu : pente très inclinée</li>
+                    <li>Des pentes qui limitent les plateformes continentales, peuvent descendre jusqu'à 2000m de profondeur.</li>
+                    <li>Marque la fin du plateau continental</li>
+                    <li>Talus de raccordement entre les plateformes continentales et les bassins océaniques</li>
+                    <li>Ils sont coupés ou entaillés par les vallées très profondes : CANYONS et RIAS</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">III. Les glacis continentaux</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Au pied de talus continentaux</li>
+                    <li>Formé par l'accumulation des sédiments qui ont glissé le long du talus</li>
+                    <li>Pente généralement faible</li>
+                    <li>Profondeur 3000 à 4000m</li>
+                    <li>Le glacis marque le début des grands fonds marins.</li>
+                </ul>
+            </div>
+
+            <h3 class="partie-subtitle">2. Les cuvettes océaniques : creux topographiques, conservant les dépôts accumulés en milieu océanique</h3>
+
+            <h4 class="partie-subtitle">a) Caractéristique :</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Extension très étendues : 84% de superficie totale sous-marine</li>
+                    <li>Localisation très éloignées des continents</li>
+                    <li>Très profondes de 4000 à 11 000m de profondeur</li>
+                    <li>Soubassement : formées dans du basalte dont l'âge, la température et le poids conditionnent les formes sous-marines</li>
+                </ul>
+                <div class="image-container">
+                    <img src="media/image3.png" alt="Cuvettes océaniques">
+                </div>
+            </div>
+
+            <h4 class="partie-subtitle">b) Éléments constitutifs : dorsales, rifts, bassins océaniques, le relief isolées et les fosses océanique</h4>
+
+            <h4 class="partie-subtitle">1. Les dorsales ou Crêtes océaniques = haches de montagne sous-marines : rides médio-océaniques</h4>
+            <div class="partie-content">
+                <p><strong>• Caractéristiques</strong></p>
+                <p>Reliefs sous-marins volcaniques caractérisant l'écartement de 2 plaques lithosphériques. Le magma issu de ces zones en extension forme la croûte océanique</p>
+                <ul>
+                    <li>Dénivellation moyenne : 2500m</li>
+                    <li>Se trouvent dans tous les océans</li>
+                    <li>S'étendent sur plus de 60 000Km - 5000m de profondeur, Largeur 1 000 à 3 000Km</li>
+                    <li>Occupent la partie médiane des océans</li>
+                    <li>Occupent les 2/3 de la superficie totale sous-marine</li>
+                </ul>
+            </div>
+
+            <!-- GRAPHIQUE: Dorsale océanique -->
+            <div class="graph-container">
+                <img src="media/graph_dorsale_oceanique.png" alt="Dorsale océanique">
+                <div class="image-caption">Figure 5: Coupe d'une dorsale océanique montrant le processus d'accrétion</div>
+            </div>
+
+            <h4 class="partie-subtitle">I. Le rift océanique</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Au centre de la dorsale : une crevasse ou vallée axiale appelée RIFT : large de 20 à 50 Km profonde de 100 a 2000m limitée par 2 failles</li>
+                    <li>Grande fissure de la croûte terrestre matérialisée par un fossé d'effondrement parcouru par de nombreuses fissures par lesquelles jaillit du magma basaltique</li>
+                    <li>Zone où le magma apparaît, responsable de la formation de la croûte basaltique</li>
+                    <li>Formée dans du basalte très récent, chaud et léger</li>
+                    <li>Forme des zones élevées</li>
+                    <li>Favorable aux volcanismes et aux séismes</li>
+                    <li>La dorsale est hachée ou coupée par des FRACTURES transversale en plusieurs segments de part et d'autre du rift</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">II. Les bassins océaniques</h4>
+            <div class="partie-content">
+                <p>Composés par des flancs de la dorsale et des plaines abyssales</p>
+                <p><strong>Les flancs de la dorsale :</strong></p>
+                <p>Pente très régulière : due à une subsidence thermique formés dans du basalte moins récent, moins chaud et moins léger, s'affaisse en fonction de son poids</p>
+
+                <p><strong>Les plaines abyssales :</strong></p>
+                <ul>
+                    <li>Des vastes dépressions sous-marines, généralement plane</li>
+                    <li>S'étendent au pied du talus continental - glacis continental</li>
+                    <li>Situées plus à 5 000m de profondeur.</li>
+                    <li>Peuvent être entaillées par de grands canyons sous-marins</li>
+                    <li>Se situe de part et d'autre d'une dorsale océanique</li>
+                    <li>Formées dans du basalte plus vieux, plus froid et plus recouvertes de couches sédimentaires anciennes</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">III. Les reliefs isolés</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Reliefs volcaniques sous-marins</li>
+                    <li>Constitués par des PITONS et des GUYOTS : se forment dans la plaine abyssale.</li>
+                    <li>PITON : Plus récent, présente un sommet pointu qui peut porter dès îles (ex: les Comores)</li>
+                    <li>GUYOT : plus vieux, présente un sommet plat car déjà tronqué par l'érosion, n'apparaît pas en surface</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">IV. Les fosses océaniques ou les fosses de subduction ou les ravins abyssaux</h4>
+            <div class="partie-content">
+                <ul>
+                    <li>Peu étendues : 1% de la superficie totale sous-marine</li>
+                    <li>Étroites de quelques Km très profondes (sup a 7000m) (ex: Fosse des Mariannes au large des Philippines dans les 11 000m de profondeur)</li>
+                    <li>Formé dans du basalte très vieux et très lourd</li>
+                    <li>Se forment toujours à la périphérie de la plaine abyssale</li>
+                    <li>En association ou en contiguïté avec des guirlandes ou chapelet d'îles volcaniques (ceinture de feu du Pacifique)</li>
+                    <li>Zone d'accumulation de sédiments très épais créant une fosse géosynclinale pouvant donner naissance à des chaînes de montagne continentale</li>
+                    <li>Zone de séisme et de volcanisme fréquente</li>
+                    <li>Longue dépression sous-marine profonde et étroite</li>
+                    <li>Résulte de la subduction engendrée par la collision de plaques lithosphériques</li>
+                    <li>Au niveau d'un fosse, une plaque lithosphérique d'origine océanique plus dense passe sous une plaque continentale plus légère et plonge dans l'asthénosphère : Phénomène de subduction</li>
+                    <li>Siège d'une importante activité sismique</li>
+                </ul>
+            </div>
+
+            <!-- GRAPHIQUE: Subduction -->
+            <div class="graph-container">
+                <img src="media/graph_subduction.png" alt="Subduction">
+                <div class="image-caption">Figure 6: Mécanisme de subduction et formation d'une fosse océanique</div>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h2 class="partie-title">MILIEU MARIN</h2>
+
+            <h3 class="partie-subtitle"><span class="underline">Les courants marins : Définition</span></h3>
+            <div class="partie-content">
+                <p>L'Océan n'est pas une grande étendue d'eau immobile. Au contraire, l'eau s'y déplace en permanence grâce aux courants marins. Les courants sont des déplacements d'eau de mer qui peuvent s'apparenter à d'immenses fleuves et rivières à l'intérieur de l'Océan. Ce déplacement considérable de masse d'eau répartit l'énergie solaire à la surface du globe et conditionne les températures entre l'équateur et les pôles. Les courants marins à l'image du célèbre Gulf Stream sont ainsi les grands régulateurs du climat planétaire.</p>
+                <p>Les courants marins sont engendrés par les vents dominants (ex. les alizés au niveau de l'équateur), la rotation de la Terre, les différences de température et de salinité entre les masses d'eau et la position géographique des continents.</p>
+                <div class="image-container">
+                    <img src="media/image5.jpeg" alt="Courants marins">
+                </div>
+            </div>
+
+            <!-- GRAPHIQUE: Circulation thermohaline -->
+            <div class="graph-container">
+                <img src="media/graph_circulation_thermohaline.png" alt="Circulation thermohaline">
+                <div class="image-caption">Figure 7: Schéma de la circulation thermohaline mondiale (grande ceinture de conveyor)</div>
+            </div>
+
+            <h3 class="partie-subtitle">Les courants marins de surface</h3>
+            <div class="partie-content">
+                <p>Les courants océaniques <strong>de surface</strong> sont généralement provoqués par le vent ; ils sont orientés dans le sens des aiguilles d'une montre dans l'hémisphère nord et dans le sens inverse dans l'hémisphère sud. Les courants de surface sont aussi déviés par la présence des continents et forment cinq grands tourbillons océaniques à l'échelle de la planète.</p>
+            </div>
+
+            <h4 class="partie-subtitle">Zoom sur le Gulf Stream</h4>
+            <div class="partie-content">
+                <div class="image-container">
+                    <img src="media/image6.jpeg" alt="Gulf Stream">
+                </div>
+                <p>Le Gulf Stream est un courant de surface en Atlantique Nord qui apporte une partie de la chaleur accumulée à l'équateur en transportant les eaux des Caraïbes vers l'Europe. Le Canada ne profite pas des eaux chaudes apportées par le Gulf Stream, d'où les différences de températures et de climat entre l'Europe et l'Amérique du Nord.</p>
+                <p>Les courants transfèrent l'énergie des zones équatoriales, où l'océan absorbe le plus de rayonnement solaire, vers les plus hautes latitudes. Ce transport de chaleur au sein des masses d'eau sert de <strong>régulateur thermique</strong>. L'océan assure un transport de chaleur de l'équateur vers les pôles aussi important que l'atmosphère.</p>
+                <p><strong>Un exemple de courant de surface : le Gulf Stream et la dérive nord-atlantique</strong></p>
+                <p>Le Gulf Stream permet de tempérer le climat. Il transporte les eaux chaudes des Caraïbes vers l'Europe et les eaux froides du Canada et de l'Europe vers les pays plus chauds. Il serait en partie responsable de la douceur du climat en Europe comparé à celui des régions de l'Amérique du Nord situées à la même latitude.</p>
+            </div>
+
+            <!-- GRAPHIQUE: Gulf Stream -->
+            <div class="graph-container">
+                <img src="media/graph_gulf_stream.png" alt="Gulf Stream carte">
+                <div class="image-caption">Figure 8: Trajet du Gulf Stream et son influence climatique sur l'Atlantique Nord</div>
+            </div>
+
+            <h3 class="partie-subtitle">Les courants marins de profondeur</h3>
+            <div class="partie-content">
+                <p>Les courants profonds ne sont pas influencés par les vents, contrairement aux courants de surface. Appelés aussi courants de densité, ce sont les différences de salinité et de température qui créent les courants profonds. Sur le même principe que l'huile et l'eau qui ne se mélangent pas, une eau plus dense coule en profondeur sous les eaux moins denses sans s'y mélanger.</p>
+                <p>C'est le froid et le sel qui augmente la densité de l'eau jusqu'à la faire plonger en profondeur. Ce mécanisme est à l'origine de la création de cette typologie de courants qui s'écoulent sur le bassin océanique, sous les eaux de surface moins dense, plus chaudes et moins salées. Ils se trouvent à plus de 800m de profondeur et ne sont pas les moteurs des circulations océaniques profondes contrairement aux courants de surface.</p>
+                <div class="highlight-box">
+                    <p>« Ce sont les différences de salinité et de température qui créent les courants profonds. »</p>
+                </div>
+                <div class="image-container">
+                    <img src="media/image7.jpeg" alt="Courants en profondeur">
+                </div>
+            </div>
+
+            <h3 class="partie-subtitle">Les courants marins et la circulation thermohaline</h3>
+            <div class="partie-content">
+                <p>Les courants de surface et de profondeur forment ensemble une boucle de circulation permanente à l'échelle mondiale : c'est la circulation thermohaline. Ce phénomène est ici schématisé sous la forme d'un «tapis roulant» parcourant tout le globe. Les eaux profondes (en bleu) prennent principalement naissance en Atlantique Nord et s'écoulent en direction de l'Atlantique Sud.</p>
+                <p>Ces eaux profondes remontent progressivement puis se répandent ensuite dans l'Atlantique Sud, le Pacifique et l'Océan Indien. Le retour de cette grande circulation dans l'Atlantique Nord s'effectue via des courants chauds (en rouge), proches de la surface, dont la circulation est liée à la circulation atmosphérique (les vents). On estime qu'une goutte d'eau effectue une boucle complète en un millier d'années environ.</p>
+                <div class="image-container">
+                    <img src="media/image8.jpeg" alt="Circulation thermohaline">
+                </div>
+            </div>
+
+            <h4 class="partie-subtitle">Cas particuliers : El niño</h4>
+            <div class="partie-content">
+                <p>En situation normale un courant froid, appelé courant du Pérou engendré par les alizés, circule le long de la côte ouest de l'Amérique du Sud et s'accompagne de remontées d'eaux froides profondes (upwelling). Or tous les 2 à 7 ans, les alizés faiblissent pour des raisons encore mal connues et le courant d'eaux froides est remplacé par un courant côtier plus chaud et moins salé. La forte évaporation qui en résulte provoque des pluies torrentielles s'étendant de la Californie aux côtes du Pérou.</p>
+                <p>Ce phénomène baptisé « el niño » (l'enfant en espagnol) fait référence à Jésus car il a lieu à la période de Noël.</p>
+            </div>
+
+            <!-- GRAPHIQUE: El Niño -->
+            <div class="graph-container">
+                <img src="media/graph_el_nino.png" alt="El Niño">
+                <div class="image-caption">Figure 9: Oscillation ENSO (El Niño - La Niña) et ses variations climatiques</div>
+            </div>
+
+            <h3 class="partie-subtitle">MARÉE</h3>
+            <div class="partie-content">
+                <p>On appelle marée le mouvement périodique qui affecte le niveau général des mers et des océans, et dont la manifestation la plus fréquente. Les marées sont des mouvements périodiques ascendants et descendants du niveau de la mer, causés par l'attraction gravitationnelle de la Lune et du Soleil, ainsi que par la rotation de la Terre. Ces mouvements se produisent généralement deux fois par jour, avec une marée haute (flux) et une marée basse (reflux).</p>
+            </div>
+
+            <h4 class="partie-subtitle">Types de marées</h4>
+            <div class="partie-content">
+                <p>Le mode de succession et de périodicité des marées est très différent d'un point du globe terrestre à un autre. Il existe trois types principaux de marée et toutes les nuances intermédiaires</p>
+
+                <p><strong>Marée semi-diurne à irrégularité mensuelle</strong></p>
+                <p>Ce type de marée se rencontre sur les côtes françaises, excepté en Méditerranée. La période, dite semi-diurne lunaire, vaut en moyenne 12 h 24 min, c'est-à-dire la moitié de la durée qui sépare deux passages consécutifs de la lune au méridien du lieu. L'amplitude de la marée est modulée avec une périodicité de 14,5 j correspondant à une demi-lunaison.</p>
+                <p>Le marnage est maximal au moment de la pleine ou de la nouvelle lune : c'est la vive-eau ; il est minimal au premier et au dernier quartier : c'est la morte-eau ; le revif et le déclin séparent ces deux périodes. Le marnage de vive-eau et morte-eau varie au cours de l'année.</p>
+
+                <p><strong>Marée diurne à irrégularité mensuelle</strong></p>
+                <p>C'est le cas des marées en Mer de Chine et à Tahiti ; la période est alors diurne (24 h ou 24 h 50 min) ; le marnage est modulé suivant l'âge de la lune.</p>
+
+                <p><strong>Marée mixte</strong></p>
+                <p>C'est le cas de la marée en Méditerranée, à Saigon, etc. Il s'agit d'une combinaison des marées semi-diurne et diurne, toutes deux modulées mensuellement ou bimensuellement, ce qui conduit à des lois de variation du niveau de l'eau très compliquées.</p>
+            </div>
+
+            <!-- GRAPHIQUE: Marées -->
+            <div class="graph-container">
+                <img src="media/graph_marees.png" alt="Types de marées">
+                <div class="image-caption">Figure 10: Types de marées et comparaison des amplitudes mondiales</div>
+            </div>
+
+            <h3 class="partie-subtitle">Les houles</h3>
+
+            <h4 class="partie-subtitle">Qu'est-ce qu'une Houle ?</h4>
+            <div class="partie-content">
+                <p><strong>Une houle est une série d'ondes de gravité mécaniques ou de surface générées par des systèmes météorologiques distants qui se propagent sur des milliers de kilomètres à travers les océans et les mers.</strong></p>
+                <p>Il s'agit d'une succession de vagues de vent massives et sans crête caractérisées par une gamme étroite de grandes longueurs d'onde.</p>
+                <p>Les ondes de tempête océaniques sont souvent générées dans les régions de thalweg des latitudes moyennes entre 30 et 60 degrés, dans les régions en eau profonde, en particulier dans l'Atlantique Nord et le Pacifique Nord, mais aussi dans le Pacifique Sud.</p>
+                <p>La plupart des ondes de tempête à haute énergie produites sur la planète culminent pendant l'hiver dans les hémisphères nord et sud.</p>
+                <p>Ils peuvent être visibles atteignant l'horizon dans des lignes d'ondes parallèles régulièrement espacées.</p>
+            </div>
+
+            <h4 class="partie-subtitle">La Formation D'une Houle</h4>
+            <div class="partie-content">
+                <p>Les houles ne sont pas générées par des vents locaux soufflant, par exemple, près de la côte.</p>
+                <p>Au lieu de cela, ils sont le résultat de l'interaction de violentes tempêtes avec de grandes quantités d'eau qui se produisent en pleine mer, à des milliers de kilomètres des masses terrestres.</p>
+                <p>Une tempête agit comme une pierre jetée dans un étang, envoyant des vagues d'énergie en cercles concentriques.</p>
+                <p>Plus le vent souffle longtemps et fort, plus la houle océanique est importante.</p>
+                <p>Au fur et à mesure qu'une houle s'éloigne de la tempête, les trains de vagues avec des longueurs d'onde plus longues se déplaceront plus rapidement et dépasseront les houles de longueur d'onde plus courte.</p>
+            </div>
+
+            <h3 class="partie-subtitle">Les vagues</h3>
+            <div class="partie-content">
+                <p>Du point de vue du physicien, une vague correspond à une onde mécanique qui se propage à l'interface entre la surface de l'eau et l'air. Celle-ci se caractérise par sa longueur d'onde, son amplitude, sa période et sa vitesse.</p>
+            </div>
+
+            <h4 class="partie-subtitle">Les différentes vagues : déferlante, rouleau et ressac</h4>
+            <div class="partie-content">
+                <p>La formation des vagues dépend des conditions de la naissance de ces dernières et de leur propagation ; leurs aspects sont alors différents :</p>
+                <ul>
+                    <li>Si le vent qui a créé les vagues persiste, celles-ci prennent de l'ampleur. Elles s'élèvent jusqu'à un point critique puis se brisent et basculent vers l'avant. On parle alors de déferlantes ;</li>
+                    <li>Aux abords de la côte, l'onde est perturbée par la faiblesse de la hauteur de l'eau. Cette fois encore, les vagues s'élèvent et se cassent, passé un certain point. Elles forment alors les fameux rouleaux, chers aux surfeurs ;</li>
+                    <li>Si un train de vagues heurte un obstacle, comme une jetée ou la coque d'un navire, il repart en arrière et créé des interférences avec les autres vagues. C'est ainsi que se crée le ressac.</li>
+                </ul>
+            </div>
+
+            <h4 class="partie-subtitle">Des vagues particulières : mascaret, tsunami et vague scélérate</h4>
+            <div class="partie-content">
+                <p>Le mascaret est une vague particulière qui se produit à l'embouchure d'un fleuve, du fait de l'onde de la marée montante. Cette vague qui remonte le cours du fleuve est essentiellement visible à l'occasion de grandes marées.</p>
+                <p>Les tsunamis, ces vagues géantes et dévastatrices, sont généralement provoquées à la suite d'un séisme ou d'un glissement de terrain, par le brusque mouvement d'un grand volume d'eau.</p>
+                <p>L'origine des vagues scélérates, d'amplitude énorme, qui se forment au hasard de la mer, reste encore assez mystérieuse.</p>
+            </div>
+
+            <!-- GRAPHIQUE: Vagues et houles -->
+            <div class="graph-container">
+                <img src="media/graph_vagues_houles.png" alt="Vagues et houles">
+                <div class="image-caption">Figure 11: Formation des vagues et propagation de la houle vers les côtes</div>
+            </div>
+
+            <!-- GRAPHIQUE: Tsunami -->
+            <div class="graph-container">
+                <img src="media/graph_tsunami.png" alt="Tsunami">
+                <div class="image-caption">Figure 12: Formation d'un tsunami et son amplification en approchant des côtes</div>
+            </div>
+
+            <!-- GRAPHIQUE: Comparaison du milieu marin -->
+            <div class="graph-container">
+                <img src="media/graph_comparaison_milieu.png" alt="Comparaison milieu marin">
+                <div class="image-caption">Figure 13: Comparaison des caractéristiques des phénomènes du milieu marin</div>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h2 class="partie-title">LE CYCLE DE L'EAU</h2>
+
+            <div class="image-container">
+                <img src="media/image2.gif" alt="Cycle de l'eau">
+            </div>
+
+            <!-- GRAPHIQUE: Cycle de l'eau -->
+            <div class="graph-container">
+                <img src="media/graph_cycle_eau.png" alt="Cycle de l'eau diagramme">
+                <div class="image-caption">Figure 14: Le cycle de l'eau - Processus continus de transformation et transport</div>
+            </div>
+
+            <!-- GRAPHIQUE: Cycle détaillé -->
+            <div class="graph-container">
+                <img src="media/graph_cycle_eau_detail.png" alt="Cycle détaillé">
+                <div class="image-caption">Figure 15: Interconnexions entre les différents processus du cycle hydrologique</div>
+            </div>
+
+            <!-- GRAPHIQUE: Répartition de l'eau -->
+            <div class="graph-container">
+                <img src="media/graph_eau_terre.png" alt="Répartition eau">
+                <div class="image-caption">Figure 16: Répartition de l'eau sur Terre - Eaux salées vs eaux douces</div>
+            </div>
+
+            <h3 class="partie-subtitle">1. De l'océan vers l'atmosphère (Évaporation)</h3>
+            <div class="partie-content">
+                <p><strong>Évaporation :</strong> Sous l'effet du rayonnement solaire, l'eau de surface des océans se transforme en vapeur.</p>
+                <p><strong>Évapotranspiration :</strong> Les êtres vivants (végétaux, animaux) libèrent également de la vapeur d'eau dans l'atmosphère.</p>
+                <p><strong>Rôle du vent :</strong> Les masses d'air en mouvement (vents) traversent les océans, s'enrichissant en humidité par ce processus (advection).</p>
+                <div class="image-container">
+                    <img src="media/image9.jpeg" alt="Évaporation">
+                </div>
+            </div>
+
+            <h3 class="partie-subtitle">2. Formation des précipitations (Condensation et précipitation)</h3>
+            <div class="partie-content">
+                <p><strong>Ascendance et refroidissement :</strong> Lorsque l'air humide rencontre un relief (ex: montagnes), il s'élève et se refroidit selon le gradient thermique adiabatique (baisse de température avec l'altitude).</p>
+                <p><strong>Condensation :</strong> L'air refroidi atteint son point de saturation, entraînant la formation de nuages par condensation de la vapeur d'eau.</p>
+                <p><strong>Précipitations :</strong></p>
+                <ul>
+                    <li>Températures froides : Précipitations solides (neige, grêle).</li>
+                    <li>Températures douces : Précipitations liquides (pluie).</li>
+                </ul>
+            </div>
+
+            <h3 class="partie-subtitle">3. Retour vers l'océan (Écoulement de surface et souterrain)</h3>
+            <div class="partie-content">
+                <p><strong>Ruissellement :</strong> Les eaux de pluie, de fonte des neiges ou des sources s'écoulent en surface (ruissellement), des zones élevées (amont) vers les zones basses (aval). Les cours d'eau (ruisseaux, rivières) convergent pour former des fleuves qui rejoignent l'océan.</p>
+                <p><strong>Infiltration :</strong> Une partie des eaux pénètre dans les sols perméables (ex: bassins sédimentaires), alimentant les nappes phréatiques ou aquifères. Ces réservoirs souterrain rejoignent progressivement l'océan par écoulement souterrain ou résurgences.</p>
+            </div>
+
+            <div class="conclusion">
+                <h3>Conclusion sur le Cycle de l'Eau</h3>
+                <p>Ce processus continu forme une boucle dynamique : l'eau circule entre l'océan, l'atmosphère et les continents, maintenue par l'énergie solaire et la gravité. Chaque étape (évaporation, condensation, précipitation, écoulement) assure le renouvellement et la redistribution de l'eau à l'échelle planétaire.</p>
+            </div>
+        </div>
+
+        <div class="partie">
+            <h2 class="partie-title">OCÉANISATION</h2>
+
+            <h3 class="partie-subtitle">Stade 1 :</h3>
+            <div class="partie-content">
+                <p>Sous une plaque continentale Présence de masses magmatiques qui vont provoquer un bombement et une fracturation de la croûte et provoquent la sortie du magma sous forme de volcans.</p>
+            </div>
+
+            <h3 class="partie-subtitle">Stade 2 :</h3>
+            <div class="partie-content">
+                <p>La sortie du magma provoque un vide qui va engendrer un effondrement de la croûte continentale. C'est le début de la formation d'un rift continental.</p>
+            </div>
+
+            <h3 class="partie-subtitle">Stade 3 :</h3>
+            <div class="partie-content">
+                <p>La croûte continentale s'amincit de plus en plus jusqu'à disparaître et laisser place à un magma basaltique qui va former la croûte océanique.</p>
+                <p>L'approfondissement du rift descend sous le niveau zéro : la mer envahit le rift qui devient une mer puis un futur océan avec sa dorsale bien individualisée, ses plaines abyssales et ses plateaux continentaux correspondant à la marge de la croûte continentale.</p>
+                <div class="image-container">
+                    <img src="media/image2.emf" alt="Océanisation">
+                </div>
+            </div>
+
+            <!-- GRAPHIQUE: Cycle de Wilson -->
+            <div class="graph-container">
+                <img src="media/graph_cycle_wilson.png" alt="Cycle de Wilson">
+                <div class="image-caption">Figure 17: Les 5 stades du cycle de Wilson - De la naissance à la fermeture d'un océan</div>
+            </div>
+
+            <h3 class="partie-subtitle">LE CYCLE DE WILSON</h3>
+            <div class="partie-content">
+                <p><strong>Les étapes du cycle de Wilson</strong></p>
+                <p>Le cycle commence par la formation d'un rift sous l'action de la rupture de la Lithosphère continentale, suite à la divergence de deux plaques tectoniques. Une vallée d'effondrement se forme alors, comme c'est le cas actuellement dans la corne de l'Afrique. Lorsque cette vallée entre en contact avec un océan, elle se remplit d'eau et forme une mer dont les fonds sont constitués d'une dorsale centrale et d'une jeune lithosphère océanique. Le cas de la mer Rouge en est un parfait exemple.</p>
+                <p>L'accrétion qui se poursuit au niveau de la dorsale océanique continue de créer de la Lithosphère océanique tandis que l'océan s'élargit et s'agrandit, comme c'est le cas dans l'Atlantique. Avec le temps, la densité de la lithosphère océanique vieillissante augmente et finit par provoquer sa plongée sous une autre plaque océanique ou sous une plaque continentale. Cette subduction provoque séismes et activités volcaniques à la frontière des plaques convergentes, tandis que se forment des arcs insulaires, des prismes d'accrétion et des chaînes de montagnes. C'est ce qui se passe actuellement le long des Andes ou du Japon.</p>
+                <p>Enfin, l'océan se réduit à une simple mer comme dans le cas de la mer Méditerranée, avant de disparaître avec la collision des continents. Une suture continentale se forme alors, avec l'érection d'une chaîne de montagnes telle que l'Himalaya. Dans ces montagnes, on peut retrouver des roches originaires de l'ancienne lithosphère océanique : les ophiolites. Puis, un jour, le cycle recommence et un nouveau rift apparaît...</p>
+                <p>Sources : https://g.co/about/xb82fx https://g.co/about/xb82fx</p>
+                <div class="image-container">
+                    <img src="media/image4.png" alt="Cycle de Wilson">
+                </div>
+            </div>
+
+            <!-- GRAPHIQUE: Température et salinité -->
+            <div class="graph-container">
+                <img src="media/graph_temp_salinite.png" alt="Température et salinité">
+                <div class="image-caption">Figure 18: Profils de température et de salinité dans l'océan</div>
+            </div>
+
+            <!-- GRAPHIQUE: Statistiques des océans -->
+            <div class="graph-container">
+                <img src="media/graph_oceans_stats.png" alt="Statistiques océans">
+                <div class="image-caption">Figure 19: Superficie et profondeur des principaux océans mondiaux</div>
+            </div>
+
+            <!-- GRAPHIQUE: Sédiments -->
+            <div class="graph-container">
+                <img src="media/graph_sediments.png" alt="Formation des sédiments">
+                <div class="image-caption">Figure 20: Formation des couches sédimentaires et prisme d'accrétion</div>
+            </div>
+        </div>
+
+        <div class="webographie">
+            <h3><span class="underline">Webographie</span></h3>
+            <p><strong>Géologie :</strong> département de géologie. E.Poty. Le milieu marin .page 48</p>
+            <p><strong>Le relief Sous-marin :</strong> Mme GRAINE-TAZEROUT Khadidja .page 1 - 7ème cours. Topographie général.</p>
+            <p><strong>INITIATION A LA GEOLOGIE GENERALE :</strong> Dr Philippe Steenman, collaborateur à L'Université de Liège .Page 41</p>
+            <p><strong>Futura science :</strong> cycle de Wilson.</p>
+        </div>
+
+        <footer>
+            <p>Document présenté par <strong>JAH KOB</strong></p>
+            <p>Université d'Antananarivo, Faculté des Lettres et Sciences Humaines, Mention Géographie</p>
+            <p>Année universitaire <strong>2024-2025</strong></p>
+        </footer>
+    </div>
+</body>
+</html>
