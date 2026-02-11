@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aperçu - Hydrosphère Amélioré</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #1a3a8f 0%, #2a5caa 100%); color: white; padding: 40px; border-radius: 16px; text-align: center; margin-bottom: 30px; }
+        h1 { margin: 0; font-size: 2.5em; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .stat-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        .stat-number { font-size: 3em; font-weight: bold; color: #1a3a8f; }
+        .stat-label { color: #666; margin-top: 10px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
+        .gallery-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 200px; object-fit: cover; }
+        .gallery-item p { padding: 15px; margin: 0; font-size: 0.9em; color: #333; }
+        .btn { display: inline-block; background: #ffcc00; color: #1a3a8f; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin: 20px 10px; transition: all 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,204,0,0.4); }
+        .features { background: white; padding: 30px; border-radius: 16px; margin: 30px 0; }
+        .features h2 { color: #1a3a8f; border-bottom: 3px solid #ffcc00; padding-bottom: 10px; }
+        .features ul { list-style: none; padding: 0; }
+        .features li { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .features li:before { content: "✓"; color: #2ecc71; font-weight: bold; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌊 HYDROSPHÈRE</h1>
+        <p style="font-size: 1.3em; margin-top: 15px;">Document amélioré avec graphiques scientifiques</p>
+        <p style="opacity: 0.9;">Université d'Antananarivo - Mention Géographie</p>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0;">
+        <a href="L1_PROJET_hydro_ameliore.html" class="btn">📄 Voir le Document HTML</a>
+        <a href="media/" class="btn" style="background: #1a3a8f; color: white;">🖼️ Voir les Graphiques</a>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">20</div>
+            <div class="stat-label">Graphiques Matplotlib</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Parties du Cours</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">34</div>
+            <div class="stat-label">Images Totales</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Polices Modernes</div>
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>✨ Améliorations Apportées</h2>
+        <ul>
+            <li>Design moderne avec dégradés et ombres douces</li>
+            <li>Polices Google Fonts (Playfair Display, Montserrat, Source Sans Pro)</li>
+            <li>20 graphiques scientifiques générés avec matplotlib</li>
+            <li>Animations et effets au survol</li>
+            <li>Responsive design (mobile, tablette, desktop)</li>
+            <li>Vagues décoratives en CSS</li>
+            <li>Conservation intégrale du contenu original</li>
+            <li>Table des matières interactive</li>
+        </ul>
+    </div>
+
+    <h2 style="color: #1a3a8f; margin-top: 40px;">🎨 Aperçu des Graphiques</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="media/graph_resume_hydrosphere.png" alt="Résumé">
+            <p>Tableau de bord synthétique</p>
+        </div>
+        <div class="gallery-item">
+            <img src="media/graph_derive_continents.png" alt="Dérive">
+            <p>Dérive des continents</p>
+        </div>
+        <div class="gallery-item">
+            <img src="media/graph_relief_marin.png" alt="Relief">
+            <p>Coupe du relief marin</p>
+        </div>
+        <div class="gallery-item">
+            <img src="media/graph_circulation_thermohaline.png" alt="Circulation">
+            <p>Circulation thermohaline</p>
+        </div>
+        <div class="gallery-item">
+            <img src="media/graph_cycle_eau.png" alt="Cycle">
+            <p>Cycle de l'eau</p>
+        </div>
+        <div class="gallery-item">
+            <img src="media/graph_cycle_wilson.png" alt="Wilson">
+            <p>Cycle de Wilson</p>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 30px; border-radius: 16px; margin-top: 30px;">
+        <h2 style="color: #1a3a8f;">📊 Liste Complète des Graphiques</h2>
+        <ol style="column-count: 2; column-gap: 40px;">
+            <li>Résumé visuel de l'hydrosphère</li>
+            <li>Dérive des continents (Pangée)</li>
+            <li>Coupe du relief marin</li>
+            <li>Zones de profondeur</li>
+            <li>Dorsale océanique</li>
+            <li>Subduction</li>
+            <li>Circulation thermohaline</li>
+            <li>Gulf Stream</li>
+            <li>El Niño/La Niña</li>
+            <li>Types de marées</li>
+            <li>Vagues et houles</li>
+            <li>Tsunami</li>
+            <li>Comparaison milieu marin</li>
+            <li>Cycle de l'eau</li>
+            <li>Cycle détaillé</li>
+            <li>Répartition eau</li>
+            <li>Cycle de Wilson</li>
+            <li>Température/Salinité</li>
+            <li>Statistiques océans</li>
+            <li>Formation sédiments</li>
+        </ol>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; padding: 30px; color: #666;">
+        <p><strong>Projet réalisé par JAH KOB</strong></p>
+        <p>Université d'Antananarivo - 2024/2025</p>
+    </footer>
+</body>
+</html>
